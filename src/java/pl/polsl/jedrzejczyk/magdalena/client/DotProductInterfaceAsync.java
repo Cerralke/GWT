@@ -11,9 +11,8 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
  *
  * @author CerroMeetsJava
  */
-public interface ProductCalcInterfaceAsync {
+public interface DotProductInterfaceAsync {
 
     public void myMethod(String text, String text0, String text1, String text2, String text3, String text4, AsyncCallback<String> callback);
-    public void myMethod2(String text, String text0, String text1, String text2, String text3, String text4, AsyncCallback<String> callback);
     
 }

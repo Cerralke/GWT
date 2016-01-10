@@ -12,9 +12,9 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
  *
  * @author CerroMeetsJava
  */
-@RemoteServiceRelativePath("dotproduct")
-public interface ProductCalcInterface extends RemoteService {
+@RemoteServiceRelativePath("crossproduct")
+public interface CrossProductInterface extends RemoteService {
 
     public String myMethod(String sa1,String sb1,String sa2,String sb2,String sa3,String sb3);
-    public String myMethod2(String sa1,String sb1,String sa2,String sb2,String sa3,String sb3);
+
 }

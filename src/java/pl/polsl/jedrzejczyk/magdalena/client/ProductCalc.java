@@ -59,20 +59,24 @@ public class ProductCalc extends VerticalPanel {
             public void onClick(ClickEvent event) {
                 // Make remote call. Control flow will continue immediately and later
                 // 'callback' will be invoked when the RPC completes.
-                getService().myMethod(a1.getText(),b1.getText(),a2.getText(),b2.getText(),a3.getText(),
+                getDotService().myMethod(a1.getText(),b1.getText(),a2.getText(),b2.getText(),a3.getText(),
                         b3.getText(), callback);
             }
         });
         
         btnCalc2.addClickHandler(new ClickHandler() {
             public void onClick(ClickEvent event) {
-                getService().myMethod2(a1.getText(),b1.getText(),a2.getText(),b2.getText(),a3.getText(),
+                getCrossService().myMethod(a1.getText(),b1.getText(),a2.getText(),b2.getText(),a3.getText(),
                         b3.getText(), callback);
             }
         });
     }
         
-    public static ProductCalcInterfaceAsync getService() {
-        return GWT.create(ProductCalcInterface.class);
+    public static DotProductInterfaceAsync getDotService() {
+        return GWT.create(DotProductInterface.class);
+    }
+    
+    public static CrossProductInterfaceAsync getCrossService() {
+        return GWT.create(CrossProductInterface.class);
     }
 }
