@@ -1,10 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
-    <session-config>
-        <session-timeout>
-            30
-        </session-timeout>
-    </session-config>
+    
+    <!-- Servlets -->
+    <servlet>
+        <servlet-name>DotProductInterface</servlet-name>
+        <servlet-class>pl.polsl.jedrzejczyk.magdalena.server.DotProductInterfaceImpl</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CrossProductInterface</servlet-name>
+        <servlet-class>pl.polsl.jedrzejczyk.magdalena.server.CrossProductInterfaceImpl</servlet-class>
+    </servlet>
+    
+    <!-- Servlets' mapping -->
+    <servlet-mapping>
+        <servlet-name>DotProductInterface</servlet-name>
+        <url-pattern>/main/dotproduct</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CrossProductInterface</servlet-name>
+        <url-pattern>/main/crossproduct</url-pattern>
+    </servlet-mapping>
+    
+    <!-- Welcome page -->
     <welcome-file-list>
         <welcome-file>welcomeMain.html</welcome-file>
     </welcome-file-list>

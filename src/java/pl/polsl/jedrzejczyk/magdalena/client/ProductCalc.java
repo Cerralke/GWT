@@ -56,6 +56,7 @@ public class ProductCalc extends VerticalPanel {
         };
         
         btnCalc.addClickHandler(new ClickHandler() {
+            @Override
             public void onClick(ClickEvent event) {
                 // Make remote call. Control flow will continue immediately and later
                 // 'callback' will be invoked when the RPC completes.
