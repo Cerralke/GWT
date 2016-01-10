@@ -5,10 +5,13 @@
  */
 package pl.polsl.jedrzejczyk.magdalena.client;
 
+import com.google.gwt.user.client.rpc.AsyncCallback;
+
 /**
  *
  * @author CerroMeetsJava
  */
-class GreetingServiceAsync {
-    
+public interface GreetingServiceAsync {
+  void greetServer(String input, AsyncCallback<String> callback)
+      throws IllegalArgumentException;
 }

@@ -7,6 +7,10 @@ package pl.polsl.jedrzejczyk.magdalena.client;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.dev.asm.Label;
+import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.RootPanel;
+import com.google.gwt.user.client.ui.TextBox;
 
 /**
  *
@@ -18,7 +22,16 @@ public class MainEntryPoint implements EntryPoint {
     
     private final GreetingServiceAsync greetingService = GWT.create(GreetingService.class);
     
+    @Override
     public void onModuleLoad() {
+        final Button sendButton = new Button("Dot product");
+        final Button sendButton2 = new Button("Cross product");
+        final TextBox nameField = new TextBox();
+        //final Label errorLabel = new Label();
         
+        RootPanel.get("nameFieldContainer").add(nameField);
+        RootPanel.get("sendButtonContainer").add(sendButton);
+        RootPanel.get("sendButtonContainer2").add(sendButton2);
+        //RootPanel.get("errorLabelContainer").add(errorLabel);
     }
 }
