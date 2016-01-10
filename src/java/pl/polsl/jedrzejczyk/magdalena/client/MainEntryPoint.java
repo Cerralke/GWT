@@ -9,6 +9,7 @@ import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dev.asm.Label;
 import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TextBox;
 
@@ -18,9 +19,9 @@ import com.google.gwt.user.client.ui.TextBox;
  */
 public class MainEntryPoint implements EntryPoint {
     
-    private static final String SERVER_ERROR = "An error occurred while attempting to contact the server";
+    //private static final String SERVER_ERROR = "An error occurred while attempting to contact the server";
     
-    private final GreetingServiceAsync greetingService = GWT.create(GreetingService.class);
+    //private final GreetingServiceAsync greetingService = GWT.create(GreetingService.class);
     
     @Override
     public void onModuleLoad() {
@@ -33,5 +34,7 @@ public class MainEntryPoint implements EntryPoint {
         RootPanel.get("sendButtonContainer").add(sendButton);
         RootPanel.get("sendButtonContainer2").add(sendButton2);
         //RootPanel.get("errorLabelContainer").add(errorLabel);
+        
+        RootPanel.get().add(new ProductCalc());
     }
 }
