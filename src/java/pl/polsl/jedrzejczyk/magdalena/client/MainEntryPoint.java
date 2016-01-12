@@ -6,16 +6,15 @@
 package pl.polsl.jedrzejczyk.magdalena.client;
 
 import com.google.gwt.core.client.EntryPoint;
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.RootPanel;
 
 /**
- *
- * @author CerroMeetsJava
+ * Entry point. Calls creation of table for calculations on module load.
+ * @author Jędrzejczyk Magdalena
+ * @version 1.0
  */
 public class MainEntryPoint implements EntryPoint {
 
-    @Override
     public void onModuleLoad() {
 
         RootPanel.get().add(new ProductCalc());

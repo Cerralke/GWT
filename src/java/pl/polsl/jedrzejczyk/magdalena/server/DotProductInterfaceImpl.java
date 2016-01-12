@@ -9,11 +9,23 @@ import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import pl.polsl.jedrzejczyk.magdalena.client.DotProductInterface;
 
 /**
- *
- * @author CerroMeetsJava
+ * Service for dot product calculation.
+ * @author Jędrzejczyk Magdalena
+ * @version 1.0
  */
 public class DotProductInterfaceImpl extends RemoteServiceServlet implements DotProductInterface {
-    public String myMethod(String sa1,String sb1,String sa2,String sb2,String sa3,String sb3) {
+
+    /**
+     * actual method for dot product calculation
+     * @param sa1 x of first vector
+     * @param sb1 y of first vector
+     * @param sa2 z of first vector
+     * @param sb2 x of second vector
+     * @param sa3 y of second vector
+     * @param sb3 z of second vector
+     * @return result
+     */
+    public String dotProductCalc(String sa1,String sb1,String sa2,String sb2,String sa3,String sb3) {
         Double a1,a2,a3,b1,b2,b3;
         a1 = Double.parseDouble(sa1);
         a2 = Double.parseDouble(sa2);

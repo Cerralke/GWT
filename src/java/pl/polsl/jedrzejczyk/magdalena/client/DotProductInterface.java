@@ -9,12 +9,23 @@ import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 
 /**
- *
- * @author CerroMeetsJava
+ * Client side part of dot product calculation service.
+ * @author Jędrzejczyk Magdalena
+ * @version 1.0
  */
 @RemoteServiceRelativePath("dotproduct")
 public interface DotProductInterface extends RemoteService {
 
-    public String myMethod(String sa1,String sb1,String sa2,String sb2,String sa3,String sb3);
+    /**
+     * Calculates dot product.
+     * @param sa1 first vector x value
+     * @param sb1 first vector y value
+     * @param sa2 first vector z value
+     * @param sb2 second vector x value
+     * @param sa3 second vector y value
+     * @param sb3 second vector z value
+     * @return result
+     */
+    public String dotProductCalc(String sa1,String sb1,String sa2,String sb2,String sa3,String sb3);
 
 }

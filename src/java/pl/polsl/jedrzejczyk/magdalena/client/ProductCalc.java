@@ -13,13 +13,15 @@ import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
+import pl.polsl.jedrzejczyk.magdalena.shared.FieldVerifier;
 
 /**
- *
- * @author CerroMeetsJava
+ * Creates table for given parameters. Creates buttons to send datas. Calls proper services.
+ * @author Jędrzejczyk Magdalena
+ * @version 1.0
  */
 public class ProductCalc extends VerticalPanel {
-    
+
     final Label serverReply = new Label();
     final TextBox a1 = new TextBox();
     final TextBox b1 = new TextBox();
@@ -29,9 +31,12 @@ public class ProductCalc extends VerticalPanel {
     final TextBox b3 = new TextBox();
     final Button btnCalc = new Button("Calculate dot product");
     final Button btnCalc2 = new Button("Calculate cross product");
-    
+
+    /**
+     * Creates form for product calculation. Creates buttons with events' handlers.
+     */
     public ProductCalc() {
-        
+
         add(new Label("Give values to calculate: "));
         add(a1);
         add(b1);
@@ -42,41 +47,57 @@ public class ProductCalc extends VerticalPanel {
         add(btnCalc);
         add(btnCalc2);
         add(serverReply);
-        
+
         final AsyncCallback<String> callback = new AsyncCallback<String>() {
-            @Override
+
             public void onSuccess(String result) {
                 serverReply.setText("Result: " + result);
             }
-            
-            @Override
+
             public void onFailure(Throwable caught) {
-                serverReply.setText("Communication failed");
+                serverReply.setText("Calculation failed");
             }
         };
-        
+
         btnCalc.addClickHandler(new ClickHandler() {
-            @Override
             public void onClick(ClickEvent event) {
-                // Make remote call. Control flow will continue immediately and later
-                // 'callback' will be invoked when the RPC completes.
-                getDotService().myMethod(a1.getText(),b1.getText(),a2.getText(),b2.getText(),a3.getText(),
-                        b3.getText(), callback);
+                if (FieldVerifier.isValid(a1.getText()) && FieldVerifier.isValid(a2.getText())
+                        && FieldVerifier.isValid(a3.getText()) && FieldVerifier.isValid(b1.getText())
+                        && FieldVerifier.isValid(b2.getText()) && FieldVerifier.isValid(b3.getText())) {
+                    getDotService().dotProductCalc(a1.getText(), b1.getText(), a2.getText(), b2.getText(), a3.getText(),
+                            b3.getText(), callback);
+                } else {
+                    serverReply.setText("Please fulfill all fields.");
+                }
             }
         });
-        
+
         btnCalc2.addClickHandler(new ClickHandler() {
             public void onClick(ClickEvent event) {
-                getCrossService().myMethod(a1.getText(),b1.getText(),a2.getText(),b2.getText(),a3.getText(),
-                        b3.getText(), callback);
+                if (FieldVerifier.isValid(a1.getText()) && FieldVerifier.isValid(a2.getText())
+                        && FieldVerifier.isValid(a3.getText()) && FieldVerifier.isValid(b1.getText())
+                        && FieldVerifier.isValid(b2.getText()) && FieldVerifier.isValid(b3.getText())) {
+                    getCrossService().crossProductCalc(a1.getText(), b1.getText(), a2.getText(), b2.getText(), a3.getText(),
+                            b3.getText(), callback);
+                } else {
+                    serverReply.setText("Please fulfill all fields.");
+                }
             }
         });
     }
-        
+
+    /**
+     * Calls service for dot product calculation.
+     * @return result
+     */
     public static DotProductInterfaceAsync getDotService() {
         return GWT.create(DotProductInterface.class);
     }
-    
+
+    /**
+     * Calls service for cross product calculation.
+     * @return result
+     */
     public static CrossProductInterfaceAsync getCrossService() {
         return GWT.create(CrossProductInterface.class);
     }
